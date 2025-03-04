@@ -1,8 +1,30 @@
 .favorites {
-    padding: 2rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Add this new CSS for the favorites grid */
+.favorites .movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller card size */
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure movie cards maintain consistent size */
+.favorites .movie-card {
+  max-width: 300px; /* Add a maximum width */
+  margin: 0 auto; /* Center the card */
+  width: 100%;
+}
+
+.favorites .movie-poster {
+  aspect-ratio: 2/3; /* Maintain poster aspect ratio */
+  overflow: hidden;
+}
   
   .favorites h2 {
     margin-bottom: 2rem;

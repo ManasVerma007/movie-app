@@ -1,38 +1,36 @@
 import { createContext, useState, useContext, useEffect } from "react";
 
 const MovieContext = createContext();
-
-export const useMovieContext = () => useContext(MovieContext); // Custom hook to use the MovieContext in functional components
+export const useMovieContext = () => useContext(MovieContext);
 
 export const MovieProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    console.log("Initial load - checking localStorage");
     const storedFavs = localStorage.getItem("favorites");
-    console.log("Found in localStorage:", storedFavs);
 
     if (storedFavs) {
       try {
         const parsed = JSON.parse(storedFavs);
-        console.log("Parsed favorites:", parsed);
         setFavorites(parsed);
       } catch (e) {
         console.error("Error parsing favorites from localStorage:", e);
       }
     }
+    setIsInitialLoad(false);
   }, []);
 
   useEffect(() => {
-    try {
-      console.log("Saving to localStorage:", favorites);
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      const saved = localStorage.getItem("favorites");
-      console.log("Verification - saved in localStorage:", saved);
-    } catch (e) {
-      console.error("Error saving favorites to localStorage:", e);
+    if (!isInitialLoad) {
+      try {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        const saved = localStorage.getItem("favorites");
+      } catch (e) {
+        console.error("Error saving favorites to localStorage:", e);
+      }
     }
-  }, [favorites]);
+  }, [favorites, isInitialLoad]);
 
   const addToFavorites = (movie) => {
     setFavorites((prev) => [...prev, movie]);

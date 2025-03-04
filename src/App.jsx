@@ -5,10 +5,11 @@ import Home from './pages/Home'
 import {Route, Routes} from 'react-router-dom'
 import Favourites from './pages/Favourites'
 import NavBar from './components/Navbar'
+import { MovieProvider } from './contexts/MovieContexts'
 
 function App() {
   return (
-    <div>
+    <MovieProvider>
       <NavBar />
     <main className="main-content">
       <Routes>
@@ -17,7 +18,7 @@ function App() {
       </Routes>
 
     </main>
-    </div>
+    </MovieProvider>
   )
 }
 

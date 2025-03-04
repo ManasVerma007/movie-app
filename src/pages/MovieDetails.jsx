@@ -57,7 +57,6 @@ function MovieDetails() {
     return <div className="error-message">Movie not found</div>;
   }
 
-  // Find YouTube trailer
   const trailer = videos.find(video => video.type === "Trailer" && video.site === "YouTube");
 
   return (

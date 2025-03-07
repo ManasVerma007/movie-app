@@ -1,10 +1,9 @@
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://your-deployed-server.com";
 
-const BASE_URL = "https://api.themoviedb.org/3";
 
 export const getPopularMovies = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+    const response = await fetch(`${API_BASE_URL}/api/movies/popular`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);
@@ -21,9 +20,7 @@ export const getPopularMovies = async () => {
 export const searchMovies = async (query) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-        query
-      )}`
+      `${API_BASE_URL}/api/movies/search?query=${encodeURIComponent(query)}`
     );
     
     if (!response.ok) {
@@ -38,12 +35,9 @@ export const searchMovies = async (query) => {
   }
 };
 
-
 export const getMovieDetails = async (movieId) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-    );
+    const response = await fetch(`${API_BASE_URL}/api/movies/${movieId}`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);
@@ -58,9 +52,7 @@ export const getMovieDetails = async (movieId) => {
 
 export const getMovieCredits = async (movieId) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
-    );
+    const response = await fetch(`${API_BASE_URL}/api/movies/${movieId}/credits`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);
@@ -75,9 +67,7 @@ export const getMovieCredits = async (movieId) => {
 
 export const getMovieVideos = async (movieId) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
-    );
+    const response = await fetch(`${API_BASE_URL}/api/movies/${movieId}/videos`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);
@@ -93,9 +83,7 @@ export const getMovieVideos = async (movieId) => {
 
 export const getSimilarMovies = async (movieId) => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=1`
-    );
+    const response = await fetch(`${API_BASE_URL}/api/movies/${movieId}/similar`);
     
     if (!response.ok) {
       throw new Error(`API error: ${response.status} ${response.statusText}`);

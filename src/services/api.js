@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://your-deployed-server.com";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Helper function to build API URLs
 const buildUrl = (endpoint) => {
@@ -53,6 +53,7 @@ export const getPopularMovies = async () => {
   try {
     console.log('Fetching popular movies...');
     const url = buildUrl('/api/movies/popular');
+    console.log("url is as ", url);
     const data = await fetchWithCache(url);
     return data.results;
   } catch (error) {

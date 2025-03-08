@@ -55,6 +55,12 @@ This setup eliminates the need for unreliable CORS proxy services and provides a
 - **Frontend**: Deployed on Vercel at [https://movie-app-lake-six.vercel.app](https://movie-app-lake-six.vercel.app)
 - **Backend**: Deployed on AWS EC2 with HTTPS at [https://cineverse-ultra.duckdns.org](https://cineverse-ultra.duckdns.org)
 
+## 📚 Repositories
+
+- **Frontend**: [GitHub - CineVerse](https://github.com/ManasVerma007/movie-app)
+- **Backend**: [GitHub - CineVerse Backend API](https://github.com/ManasVerma007/movie-app-server)
+
+
 ## 🔮 Future Plans
 
 - User accounts and profiles
